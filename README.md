@@ -1,5 +1,12 @@
 # react-testing-jest
 
+basic matchers::
+1. .not.toBeNull()
+2. .toHaveLength(2)
+3. .toBe("12:00");
+4. .toEqual("13:00")
+
+
 case 1:
 ++++++
 When an array is received in props and .map operation is performed::
