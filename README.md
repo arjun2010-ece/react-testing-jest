@@ -55,6 +55,8 @@ describe('AppointmentsDayView', () => {
         // check for each li elements content
         expect(container.querySelectorAll("li")[0].textContent).toBe("12:00"); // check for each zeroth li elements content
         expect(container.querySelectorAll('li')[1].textContent).toEqual("13:00"); // check for each first li elements content
+        
+        expect(container.querySelectorAll('li > button')[0].type).toEqual('button'); //check for buttons type attribute
      });
     
     
