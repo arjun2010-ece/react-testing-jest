@@ -62,3 +62,33 @@ describe('AppointmentsDayView', () => {
     
  });
 
+
+On click of button the right text appears on screen::
++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+<div id="appointmentsDayView">
+        <ol>
+        {appointments.map((appointment, i) => (
+            <li key={appointment.startsAt}>
+                <button type="button" onClick={() => setSelectedAppointment(i)}>
+                    {appointmentTimeOfDay(appointment.startsAt)}
+                </button>
+            </li>
+        ))}
+        </ol>
+        
+        {appointments.length === 0 ? ( <p>There are no appointments scheduled for today.</p> ) : 
+        ( <Appointment {...appointments[selectedAppointment]} />)}
+    </div>
+    
+    //..........
+    import ReactTestUtils from 'react-dom/test-utils'; //need to import this for click 
+
+    
+    it('renders another appointment when selected', () => {
+        
+        render(<AppointmentsDayView appointments={appointments} />);
+        const button = container.querySelectorAll('button')[1]; //get hold of first button
+        ReactTestUtils.Simulate.click(button);
+        expect(container.textContent).toMatch('Jordan'); // check result on second click on text rendered on screen
+    });
